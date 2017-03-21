@@ -137,11 +137,21 @@
             <artifactId>jboss-transaction-api_1.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.ejb</groupId>
-			<artifactId>jboss-ejb-api_3.2_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.narayana.jts</groupId>
+            <artifactId>narayana-jts-jacorb</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jacorb</groupId>
+            <artifactId>jacorb</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging</artifactId>
@@ -241,13 +251,6 @@
             <activation>
                 <jdk>[1.9,)</jdk>
             </activation>
-            <dependencies>
-               <dependency>
-                    <groupId>org.jboss.narayana.jts</groupId>
-                    <artifactId>narayana-jts-idlj</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
             <build>
                 <plugins>
                     <plugin>
@@ -300,26 +303,6 @@
             <properties>
                 <jvm.args.jdk9>--add-modules java.corba --patch-module java.corba=${java.corba.patch.jar} --upgrade-module-path ${project.build.directory}/upgrademodulepath</jvm.args.jdk9>
             </properties>
-        </profile>
-        <profile>
-            <id>jts-jacorb</id>
-            <activation>
-                <property>
-                    <name>!jacorb-disabled</name>
-                </property>
-            </activation>
-            <dependencies>
-               <dependency>
-                    <groupId>org.jboss.narayana.jts</groupId>
-                    <artifactId>narayana-jts-jacorb</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                  <groupId>jacorb</groupId>
-                  <artifactId>jacorb</artifactId>
-                  <scope>provided</scope>
-                </dependency>
-            </dependencies>
         </profile>
     </profiles>
 </project>
