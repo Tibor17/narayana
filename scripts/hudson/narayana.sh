@@ -256,7 +256,7 @@ function build_narayana {
     [ $? = 0 ] || fatal "You must use the IBM jdk to build with ibmorb"
   fi
 
-  JAVA_OPTS="$JAVA_OPTS -Xms1303m -Xmx1303m" ./build.sh -Prelease,community$OBJECT_STORE_PROFILE $ORBARG "$@" $NARAYANA_ARGS $IPV6_OPTS $CODE_COVERAGE_ARGS clean install
+  ./build.sh -Prelease,community$OBJECT_STORE_PROFILE $ORBARG "$@" $NARAYANA_ARGS $IPV6_OPTS $CODE_COVERAGE_ARGS clean install
   [ $? = 0 ] || fatal "narayana build failed"
 
   return 0
