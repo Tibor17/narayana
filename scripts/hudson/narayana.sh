@@ -744,14 +744,14 @@ function qa_tests_once {
       if [[ -n "$QA_STRESS" ]] ; then
         for i in `seq 1 $QA_STRESS`; do
           echo run $i;
-          ant -f run-tests.xml $QA_PROFILE -Dtest.name=$QA_TESTGROUP -Dtest.methods="$QA_TESTMETHODS" onetest -Dcode.coverage=$codeCoverage;
+          ant -f run-tests.xml $QA_PROFILE -Dtest.name=$QA_TESTGROUP -Dtest.methods="$QA_TESTMETHODS" onetest -Dcode.coverage=$codeCoverage -Dorbtype=$orbtype;
           if [ $? -ne 0 ]; then
             ok=1; break;
           fi
         done
       else
         for testgroup in $QA_TESTGROUP; do
-          ant -f run-tests.xml $QA_PROFILE -Dtest.name=$testgroup -Dtest.methods="$QA_TESTMETHODS" onetest -Dcode.coverage=$codeCoverage;
+          ant -f run-tests.xml $QA_PROFILE -Dtest.name=$testgroup -Dtest.methods="$QA_TESTMETHODS" onetest -Dcode.coverage=$codeCoverage -Dorbtype=$orbtype;
           if [ $? -ne 0 ]; then
             echo "test group $testgroup failed"
             ok=1;
@@ -759,7 +759,7 @@ function qa_tests_once {
         done
       fi
     else
-      ant -f run-tests.xml $target $QA_PROFILE -Dcode.coverage=$codeCoverage
+      ant -f run-tests.xml $target $QA_PROFILE -Dcode.coverage=$codeCoverage -Dorbtype=$orbtype
       ok=$?
     fi
 
