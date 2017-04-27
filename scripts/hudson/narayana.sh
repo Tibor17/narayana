@@ -320,7 +320,7 @@ function build_as {
      # build openjdk-orb with fixing the reflect issue
      build_openjdk_orb
      # replace the openjdk-orb with the 8.0.8.Beta1-SNAPSHOT
-     sed -i s/8.0.6.Final/8.0.8.Beta1-SNAPSHOT/g pom.xml
+     sed -i s/8.0.7.Final/8.0.8.Beta1-SNAPSHOT/g pom.xml
   fi
 
   export MAVEN_OPTS="-XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC $MAVEN_OPTS"
